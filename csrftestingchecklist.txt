@@ -1,0 +1,93 @@
+Writeup-1:
+
+Tip: Because there was no server-side validation of the Email field. And hence, the remediation for such problem would be to ensure the necessary validation is in place.
+
+If you ever come across such fields, try to perform CSRF by giving random values, assuming there is no server-side validation. You may just come across a P1 issue. 
+
+URL: https://ladysecspeare.wordpress.com/2020/04/05/how-a-simple-csrf-attack-turned-into-a-p1-level-bug/
+
+Writeup-2: JSON CSRF
+
+Tip: * Auth. mechanism whould be cookie-based.
+* HTTP request should not be fortified by custom random token on header as well as in body.
+* HTTP request should not be fortified by SOP.
+
+It is possible if 2nd and 3rd points are not satisfied.
+
+Important Tips:
+
+* Change request boday to get and append body as a query parameter.
+* Test the request without Customized Token and also a header.
+* Test the request with exact same length but a different token.
+
+If you're trying on method other than POST, then try for method override function i.e. making a POST request and  adding "_method=PUT".
+
+URL: https://medium.com/bugbountywriteup/how-i-exploit-the-json-csrf-with-method-override-technique-71c0a9a7f3b0
+
+Writeup-3:
+
+Tip: Always try to change HTTP method from GET to DELETE (once check for account settings).
+
+Try delete and add user id in the query. If deleted, then BOOMM.
+
+URL: https://fellchase.blogspot.com/2019/12/authorization-bug-that-every-bug-hunter-missed-on-a-popular-program.html
+
+Writeup-4:
+
+Tip:
+If a site uses content type as json, try to change it to regular content types i.e., application/x-www-form-urlencoded,
+if the site is not validating Content-Type header then CSRF can be triggered.(provided there are no random tokens or anything as CSRF Protection.)
+
+URL: https://fellchase.blogspot.com/2020/02/site-wide-csrf-on-popular-program.html
+
+Writeup-5:
+
+Tip: Check for delete account button on my profile page and observe request.
+
+If there is a csrf token in request body, try to replace it with victim's csrf token and if it worked, then it is CSRF!!!
+
+URL: https://santuysec.com/2020/01/21/google-bug-bounty-csrf-in-learndigital-withgoogle-com/
+
+Writeup-6:
+
+Not Understood
+
+URL: https://www.darabi.me/2019/12/instagram-delete-media-csrf.html
+
+Writeup-7:
+GraphQL CSRF
+
+Steps to check:
+
+    Remove the Referer
+    Set Origin to null
+    Set content-type to text/plain
+    Append "=" to the end of body request
+
+Appending "=" to the end of the body request is to test if we can make a request of JSON data using post form in html and using enctype text/plain.After modifying the request, test to send the request.
+
+URL:
+https://rafiem.github.io/bugbounty/tokopedia/site-wide-csrf-graphql/
+
+
+Writeup-8:
+
+Tip:
+If there is any CSRF Token, check if it is being validated from server-side or not. If a blank value lets you perform action, then it is not validated server-side and vulnerbale to CSRF.
+
+URL:
+https://medium.com/@rajeshranjan457/how-i-csrfd-my-first-bounty-a62b593d3f4d
+
+Writeup-9:
+
+Tip: Always understand the flow of program and functionality. It helps in chaining bugs to increase impact.
+Check for html injection in text-box and if vulnerable try for XSS!!!. If XSS is not possible then try to check for other sensitive page and inject it as an iframe. Make sure that a submit request is vulnerable to CSRF because any ser would not click on malicious link/button. So, as soon as page loads, the iframe should work and link shoulb be pinged so that sensitive action can be performed.
+
+URL: https://medium.com/@irounakdhadiwal999/stored-iframe-injection-csrf-account-takeover-42c93ad13f5d
+
+Writeup-10:
+
+Read it once more and understand code thorughly
+
+URL: https://saadahmedx.medium.com/bypass-csrf-with-clickjacking-worth-1250-6c70cc263f40
+
