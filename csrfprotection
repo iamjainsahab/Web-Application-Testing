@@ -1,0 +1,5 @@
+CSRF Protection are implemented:
+
+* By adding headers for authorization.
+* By adding protection to origin header
+* Implementing checks on Content-Type header.
