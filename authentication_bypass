@@ -1,0 +1,20 @@
+Authentication Bypass
+
+Writeup-1:
+
+Understand it thoroughly.
+
+URL: https://xpoc.pro/oauth-authentication-bypass-on-airbnb-acquisition-using-weird-1-char-open-redirect/
+
+Writeup-2:
+
+Tip: If login is done via 2FA, then try to manipualte victim_no to attacker_no and gain access to victim's account.
+
+URL: https://gauravnarwani.com/two-factor-authentication-bypass/
+
+Writeup-3:
+
+Tip: Implement 2FA and lnk it to another place and check if it asks for 2FA code or not. If it doesn't ask, then there is a flaw.
+
+URL: https://medium.com/@vishnu0002/instagram-multi-factor-authentication-bypass-924d963325a1
+
